@@ -3,7 +3,9 @@
     {
       "path": "force-app",
       "default": true
-    }
+    },
+    { "path" : "unpackaged" }, 
+    { "path" : "utils" } 
   ],
   "name": "OCP9",
   "namespace": "",
