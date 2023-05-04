@@ -1,12 +1,14 @@
-<apex:page controller="VFC01_Team">
-    <apex:pageBlock>
+<apex:page >
+    <!--controller="VFC01_Team">
+    <!--apex:pageBlock-->
         <!-- Display the sum of all team orders Total Amount -->
-        <apex:outputText value="Sum of my team orders: €{!ordersSum}" />
-    </apex:pageBlock>
+        <!--apex:outputText value="Sum of my team orders: €{!ordersSum}" /-->
+    <!--/apex:pageBlock>
     <apex:pageBlock rendered="{!AND(NOT(ISNULL(details)),details.size>0)}" title="Details:">
         <!-- Display the sum of orders Total Amount for each salesperson -->
-        <apex:pageBlockTable value="{!details}" var="row">
-            <apex:column>
+        <!--apex:pageBlockTable value="" >
+            <!--value="{!details}" var="row"-->
+            <!--apex:column>
                 <apex:facet name="header">Salesperson</apex:facet>
                 {!row['name']}
             </apex:column>
@@ -15,5 +17,6 @@
                 {!row['total']}
             </apex:column>
         </apex:pageBlockTable>
-    </apex:pageBlock>
+    </apex:pageBlock-->
+
 </apex:page>

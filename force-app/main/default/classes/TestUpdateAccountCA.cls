@@ -1,5 +1,7 @@
 @isTest
-private class TestUpdateAccountCA {
+
+// changemennt de la méthode de test de private à public.
+public class TestUpdateAccountCA {
     @isTest static void test() {
         Account acc1 = new Account(Name = 'Test Account 1');
         insert acc1;
