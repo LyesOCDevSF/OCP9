@@ -20,8 +20,8 @@ public class Batch01AccountChiffreAffaire implements Database.Batchable<sObject>
 }
      
     global void finish(Database.BatchableContext info){  
-        UpdateCA updater = new UpdateCA();   
-        UpdateCA.updateChiffreAffaire(setAccountIds);
+        UpdateCA updateCaNew = new UpdateCA();   
+        updateCaNew.updateChiffreAffaire(setAccountIds);
     } 
 
 }
