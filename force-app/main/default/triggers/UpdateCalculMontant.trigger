@@ -1,5 +1,7 @@
-trigger UpdateCalculMontant on Order (before update) {
+trigger UpdateCalculMontant on Account (before update) {
 	
-	Order newOrder= trigger.new[0];
-	newOrder.NetAmount__c = newOrder.TotalAmount - newOrder.ShipmentCost__c;
+	/*Order newOrder= trigger.new[0];
+	newOrder.NetAmount__c = newOrder.TotalAmount - newOrder.ShipmentCost__c;*/
+
+	//UpdateCA.updateChiffreAffaire();
 }

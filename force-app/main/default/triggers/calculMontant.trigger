@@ -1,7 +1,21 @@
-trigger CalculMontant on Order (before update) {
-    OrderService.calculateNetAmount(Trigger.new);
-}
+trigger CalculMontant on Order (before update, after insert, after update) {
+    if (Trigger.isBefore) {
+        OrderService.calculateNetAmount(Trigger.new);
+    }
 
+    if (Trigger.isAfter) {
+        Set<Id> accountIds = new Set<Id>();
+
+        for(Order ord : Trigger.new) {
+            accountIds.add(ord.AccountId);
+        }
+
+        if (!accountIds.isEmpty()) {
+            UpdateCA updateTotalCA = new UpdateCA();
+            updateTotalCA.updateChiffreAffaire(accountIds);
+        }
+    }
+}
 
 
 
