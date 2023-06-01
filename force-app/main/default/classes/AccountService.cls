@@ -1,6 +1,6 @@
-public with sharing class UpdateCA {
+public with sharing class AccountService {
     
-   public void updateChiffreAffaire(Set<Id> setAccountIds) {
+   public void updateTotalRevenueForAccounts(Set<Id> setAccountIds) {
 // Utilisez une requête SOQL pour obtenir une liste de comptes correspondant aux IDs
 
 //Schema.sObjectType.Account.isAccessible() ??
