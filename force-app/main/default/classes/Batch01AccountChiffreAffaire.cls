@@ -15,6 +15,7 @@ public class Batch01AccountChiffreAffaire implements Database.Batchable<sObject>
         //Set<Id> setAccountIds = (new Map<Id,SObject>(scope)).keySet();
         for (Account account : scope) {
             setAccountIds.add(account.Id);
+            //appeler UpdateCA ici 
        
     }    
 }
