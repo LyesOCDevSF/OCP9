@@ -1,4 +1,4 @@
-<apex:page controller="MyTeamOrderController">
+<!--apex:page controller="MyTeamOrderController"-->
     <!--apex:pageBlock-->
         <!--Display the sum of all team orders Total Amount-->
         <!--apex:outputText value="Sum of my team orders: €{!sumOrders}"/-->
@@ -18,4 +18,11 @@
         <!--/apex:pageBlockTable-->
     <!--/apex:pageblock-->
 
+<!--/apex:page-->
+<apex:page controller="MyTeamOrderController" >
+    <div>
+        <h1>
+            Sum of my team orders: <apex:outputText value="{!SumOrders}" />
+        </h1>
+    </div>
 </apex:page>
