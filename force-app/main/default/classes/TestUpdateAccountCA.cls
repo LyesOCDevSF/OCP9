@@ -35,15 +35,18 @@ public class TestUpdateAccountCA {
         Test.startTest();
 
         // appel de la classe de service pour mettre à jour les comptes 
-        AccountService.updateTotalRevenueForAccounts(acc1.Id);
+
+        Set<Id> accountIds = new Set<Id>{acc1.Id};
+
+        AccountService.updateTotalRevenueForAccounts(accountIds);
 
         Test.stopTest();
 
         
         
-         //acc1 = [SELECT Id, Chiffre_d_affaire__c FROM Account WHERE Id = :acc1.Id];
+         acc1 = [SELECT Id, Chiffre_d_affaire__c FROM Account WHERE Id = :acc1.Id];
 
         
-        //System.assertEquals(expectedValue, acc1.Chiffre_d_affaire__c, 'Test fail');
+        System.assertEquals(1150, acc1.Chiffre_d_affaire__c, 'Test fail');
     }
 }
