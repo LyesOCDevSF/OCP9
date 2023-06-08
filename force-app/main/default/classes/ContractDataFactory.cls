@@ -6,7 +6,7 @@ public with sharing class ContractDataFactory {
         //Ajout des contrats de test 
         List<Contract> contracts = New List<Contract>();
 
-        for(integer i = 0; i<numContract; i++){
+        for(integer i= 0; i< numContract; i++){
 
             Contract contract = new Contract(
                 AccountId = accountId,
@@ -15,7 +15,7 @@ public with sharing class ContractDataFactory {
                 Status = 'Draft'
             );
 
-            contract.add(contracts);
+            contracts.add(contract);
 
         }
         return contracts;
