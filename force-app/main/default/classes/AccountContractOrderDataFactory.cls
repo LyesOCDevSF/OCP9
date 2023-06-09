@@ -3,8 +3,9 @@ public with sharing class AccountContractOrderDataFactory {
         
         List<Account> accounts = New List<Account>();
 
-        for(integer i; i<numAccounts; i++){
+        for(integer i=0; i<numAccounts; i++){
             Account account = new Account();
+            account.Name = 'Test Account ' + i;
             accounts.add(account);
         }
         return accounts;
