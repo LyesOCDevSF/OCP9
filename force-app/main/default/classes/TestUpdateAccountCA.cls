@@ -11,6 +11,9 @@ public class TestUpdateAccountCA {
         Product2 pd1 = new Product2(Name = 'Chemise Verte longue XYX', Family = 'Chemise');
         Insert pd1;
  
+        List<Contract> contracts = ContractDataFactory.createContract(1, acc1.Id); 
+        insert contracts;
+
         //Create the PricebookEntry
         // ici on créer les prix produit pour la commande avec sa quantité 
         PricebookEntry pbe = new PricebookEntry(
@@ -19,11 +22,16 @@ public class TestUpdateAccountCA {
             UnitPrice = 1020,
             IsActive = true
         );
+       // System.debug();
         Insert pbe;
         
         // creation de la commande et création des produits à ajouter 
 
-        Order o1 = new Order(AccountId = acc1.Id);
+        Order o1 = new Order(AccountId = acc1.Id,
+        Status = 'draft',
+        EffectiveDate = System.today());
+       
+        
         insert o1;
 
         OrderItem oi1 = new OrderItem (OrderId = o1.Id, PricebookEntryId = pbe.Id, Quantity=10, UnitPrice = 150);
@@ -50,3 +58,4 @@ public class TestUpdateAccountCA {
         System.assertEquals(1150, acc1.Chiffre_d_affaire__c, 'Test fail');
     }
 }
+  
