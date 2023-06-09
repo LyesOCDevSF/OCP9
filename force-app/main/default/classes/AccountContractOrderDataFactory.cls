@@ -1,5 +1,5 @@
 public with sharing class AccountContractOrderDataFactory {
-    public static list<Account> createAccounts(Integer numAccounts, Id accountId) {
+    public static list<Account> createAccounts(Integer numAccounts) {
         
         List<Account> accounts = New List<Account>();
 
@@ -70,5 +70,26 @@ public with sharing class AccountContractOrderDataFactory {
         public void insertOrders(List<Order> orders) {
             insert orders;
         }
+
+        
+    public static List<OrderItem> createOrderItems(Integer numOrderItems, Id orderId, Id pricebookEntryId, Integer quantity, Decimal unitPrice) {
+        List<OrderItem> orderItems = new List<OrderItem>();
+
+        for(Integer i = 0; i < numOrderItems; i++) {
+            OrderItem orderItem = new OrderItem(
+                OrderId = orderId,
+                PricebookEntryId = pricebookEntryId,
+                Quantity = quantity,
+                UnitPrice = unitPrice
+            );
+            orderItems.add(orderItem);
+        }
+
+        return orderItems;
+    }
+
+    public static void insertOrderItems(List<OrderItem> orderItems) {
+        insert orderItems;
+    }
 
 }
