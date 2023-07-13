@@ -11,8 +11,8 @@ trigger Order_CalculateAmount_trigger on Order (before update, after insert, aft
         }
 
         if (!accountIds.isEmpty()) {
-            AccountService updateTotalCA = new UpdateCA();
-            updateTotalCA.updateTotalRevenueForAccounts(accountIds);
+            //AccountService updateTotalCA = new UpdateCA();
+            AccountService.updateTotalRevenueForAccounts(accountIds);
         }
     }
 }
