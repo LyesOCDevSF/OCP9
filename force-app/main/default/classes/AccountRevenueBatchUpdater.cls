@@ -11,14 +11,6 @@ global class AccountRevenueBatchUpdater implements Database.Batchable<sObject>{
      
    global void execute(Database.BatchableContext info, List<Account> scope){
         
-        // ne pas appeler les comptes 1 par un 
-       /* for (Account account : scope) {
-            
-            //appeler AccountService ici 
-          /*  AccountService updateCaNew = new AccountService();   
-             // updateCaNew.updateTotalRevenueForAccounts(setAccountIds);
-             
-    }  */
             for (Account account : scope) {
                 setAccountIds.add(account.Id);
             }
