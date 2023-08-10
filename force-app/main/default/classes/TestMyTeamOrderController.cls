@@ -3,7 +3,7 @@
 public class TestMyTeamOrderController {
 
     @isTest
-    public static void testSumOrders() {
+    public static void setupTestData() {
 
         // Création des comptes de tests
         List<Account> testAccounts = new List<Account>();
@@ -51,13 +51,23 @@ public class TestMyTeamOrderController {
             ord.Status = 'Activated';
         }
         update testOrders;
+
+    }
+
+    @isTest
+        static void testSumOrdersResult(){
+
+        setupTestData();
         
         Test.startTest();
         MyTeamOrderController controller = new MyTeamOrderController();
+        Decimal actualResult = controller.sumOrders;
         Test.stopTest();
+        
         
         Decimal expectedResult = 3600.0; // Somme des montants totaux que nous avons définis pour les commandes de test
         System.assertEquals(expectedResult, controller.sumOrders, 'The sum of total amounts should be correct.');
     }
     }
+
 

@@ -6,7 +6,6 @@ public with sharing class TestAccountRevenueBatchUpdater {
     static void testAccountRevenueBatchUpdater() {
 
 
-        Test.startTest();
         //Création des comptes de tests
         List<Account> testAccounts = AccountContractOrderDataFactory.createAccounts(100);
         AccountContractOrderDataFactory.insertAccounts( testAccounts);
@@ -64,8 +63,8 @@ public with sharing class TestAccountRevenueBatchUpdater {
         update testOrders;
 
         
+        Test.startTest();
         
-
         //initialisation du batch
         AccountRevenueBatchUpdater batch = new AccountRevenueBatchUpdater();
 
@@ -76,12 +75,19 @@ public with sharing class TestAccountRevenueBatchUpdater {
 
         //Vérification de la mise à jour des comptes
 
+        List<Id> ids = new List<Id>();
+
+
         for (Account acc : testAccounts) {
-            Account updatedAccount = [SELECT Id, Chiffre_d_affaire__c FROM Account WHERE Id = :acc.Id];
-            System.assertNotEquals(null, updatedAccount.Chiffre_d_affaire__c, 'Chiffre_d_affaire__c updated');
-
+            ids.add(acc.Id);
+            }
         
-}
 
+
+        List<Account> updatedAccounts = [SELECT Id, Chiffre_d_affaire__c FROM Account WHERE Id IN :ids];
+
+        for (Account updateAccount: updatedAccounts) {
+            System.assertEquals(1500, updateAccount.Chiffre_d_affaire__c, 'Chiffre affaire updated');
+            }
          }
     }

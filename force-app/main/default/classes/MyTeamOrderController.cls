@@ -9,18 +9,20 @@
     }
 }*/
 
-public without sharing class MyTeamOrderController {
+public with sharing class MyTeamOrderController {
     public decimal sumOrders{
-        get{
-            if(sumOrders == null){
-                sumOrders = 0;
+        
+           get {
                 AggregateResult groupedResults = [SELECT SUM(NetAmount__c) total FROM Order WHERE Status = 'Activated'];
-                sumOrders = (groupedResults.get('total') != null) ? (decimal)groupedResults.get('total') : 0;
+                return (decimal)groupedResults.get('total');
+                //sumOrders = (groupedResults.get('total') != null) ? (decimal)groupedResults.get('total') : 0;
             }
-            return sumOrders;
+            set;
         }
-        set;
+           // return sumOrders;
+        
+    
     }
-}
+
 
 
