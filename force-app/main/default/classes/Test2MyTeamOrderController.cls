@@ -39,11 +39,15 @@ public class Test2MyTeamOrderController {
         insert testOrders;
         
         // Création des OrderItems
+
+        List<OrderItem> orderItemsList = new List<OrderItem>();
         for(Integer i = 0; i < 2; i++){
             OrderItem ordItem = new OrderItem(OrderId=testOrders[i].Id, PricebookEntryId=testPricebookEntries[i].Id, Quantity=20, UnitPrice=100.0);
-            insert ordItem;
+            
             testOrders[i].NetAmount__c = ordItem.Quantity * ordItem.UnitPrice;
+            orderItemsList.add(ordItem);
         }
+        insert orderItemsList;
         update testOrders;
         
         // Passage des commandes au statut 'Activated'
