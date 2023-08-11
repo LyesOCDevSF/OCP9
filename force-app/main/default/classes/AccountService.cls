@@ -1,9 +1,7 @@
 public with sharing class AccountService {
     
    public static void  updateTotalRevenueForAccounts(Set<Id> setAccountIds) {
-// Utilisez une requête SOQL pour obtenir une liste de comptes correspondant aux IDs
 
-//Schema.sObjectType.Account.isAccessible() ??
         List<Account> accounts = [SELECT Id, Chiffre_d_affaire__c, (SELECT TotalAmount FROM Orders WHERE Status = 'Activated') FROM Account WHERE Id IN :setAccountIds];
                 
                 for (Account account : accounts) {

@@ -1,6 +1,6 @@
 
 @isTest
-public class TestMyTeamOrderController {
+public class Test2MyTeamOrderController {
 
     @isTest
     public static void setupTestData() {
@@ -55,19 +55,17 @@ public class TestMyTeamOrderController {
     }
 
     @isTest
-        static void testSumOrdersResult(){
-
+    static void testSumOrdersResult(){
         setupTestData();
-        
+
         Test.startTest();
         MyTeamOrderController controller = new MyTeamOrderController();
         Decimal actualResult = controller.sumOrders;
         Test.stopTest();
         
-        
         Decimal expectedResult = 3600.0; // Somme des montants totaux que nous avons définis pour les commandes de test
-        System.assertEquals(expectedResult, controller.sumOrders, 'The sum of total amounts should be correct.');
+        System.assertEquals(expectedResult, actualResult, 'The sum of total amounts should be correct.');
     }
-    }
+}
 
 

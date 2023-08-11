@@ -3,8 +3,7 @@ global class AccountRevenueBatchUpdater implements Database.Batchable<sObject>{
     private Set<Id> setAccountIds = new Set<Id>();
     
     global Database.QueryLocator start(Database.BatchableContext info){ 
-        //Requeter seulement les comptes qui ont au moins une commande avec le Status 'Ordered'
-        // requete : select AccountId, Account.Name from Order where Status ='Activated' 
+       
         
         return Database.getQueryLocator('SELECT Id, (SELECT Id, TotalAmount FROM Orders WHERE Status = \'Activated\') FROM Account');
     }

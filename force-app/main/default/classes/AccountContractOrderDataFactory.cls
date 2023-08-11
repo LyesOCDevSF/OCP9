@@ -54,9 +54,10 @@ public with sharing class AccountContractOrderDataFactory {
             }
         
             return products;
+            
         }
         
-        public static void insertProducts(List<Product2> products) {
+       public static void insertProducts(List<Product2> products) {
             insert products;
         }
 
