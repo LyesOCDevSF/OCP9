@@ -87,7 +87,7 @@ public with sharing class TestAccountRevenueBatchUpdater {
         List<Account> updatedAccounts = [SELECT Id, Chiffre_d_affaire__c FROM Account WHERE Id IN :ids];
 
         for (Account updateAccount: updatedAccounts) {
-            System.assertEquals(1500, updateAccount.Chiffre_d_affaire__c, 'Chiffre affaire updated');
+            System.assertEquals(15000, updateAccount.Chiffre_d_affaire__c, 'Chiffre affaire updated');
             }
          }
     }
